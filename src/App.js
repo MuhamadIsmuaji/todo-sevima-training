@@ -11,7 +11,7 @@ function App() {
   const TASK_MEDIUM = 'M';
   const TASK_HARD = 'H';
 
-  const FORM_STATE_CREATE = 'CREATE';
+  const INIT_FORM_STATE = 'CREATE';
   
   const getTaskPriorities = (key) => {
     const taskPriorities = [
@@ -31,7 +31,7 @@ function App() {
   
   const [task, setTask] = useState({ taskName: '', taskPriority: TASK_LOW });
   const [taskLists, setTaskList] = useState([]);
-  const [formState, setFormState] = useState(FORM_STATE_CREATE);
+  const [formState, setFormState] = useState(INIT_FORM_STATE);
 
   const handleSetTask = (e) => {
     setTask({ 
@@ -41,7 +41,7 @@ function App() {
 
   const handleSetTaskList = (e) => {
     e.preventDefault();
-    if (formState === FORM_STATE_CREATE) {
+    if (formState === INIT_FORM_STATE) {
       setTaskList([...taskLists, { taskName: task.taskName, taskPriority: task.taskPriority }]);
       setTask({ taskName: '', taskPriority: TASK_LOW })
     } else {
@@ -52,7 +52,7 @@ function App() {
       setTaskList(taskTemp);
 
       setTask({ taskName: '', taskPriority: TASK_LOW })
-      setFormState(FORM_STATE_CREATE);
+      setFormState(INIT_FORM_STATE);
     }
   }
 
@@ -62,7 +62,7 @@ function App() {
     });
 
     setTaskList(taskListsTemp);
-    setFormState(FORM_STATE_CREATE);
+    setFormState(INIT_FORM_STATE);
   }
 
   const editTask = (taskId) => {
