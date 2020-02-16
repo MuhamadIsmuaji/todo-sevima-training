@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d20043e4f2173db2a5a4fdf776060284",
+    "revision": "5dde6c83e921f9433b30cf11befb3517",
     "url": "/todo-sevima-training/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/todo-sevima-training/static/css/2.70d9d258.chunk.css"
   },
   {
-    "revision": "149ce78484d69b5777f7",
+    "revision": "abb549a94b8894a3bfeb",
     "url": "/todo-sevima-training/static/css/main.e17ac13f.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/todo-sevima-training/static/js/2.1185c8be.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "149ce78484d69b5777f7",
-    "url": "/todo-sevima-training/static/js/main.c9f0fc13.chunk.js"
+    "revision": "abb549a94b8894a3bfeb",
+    "url": "/todo-sevima-training/static/js/main.9b4963dc.chunk.js"
   },
   {
     "revision": "228f44294c5ba3ab30ec",

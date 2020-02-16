@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/todo-sevima-training/static/css/main.e17ac13f.chunk.css",
-    "main.js": "/todo-sevima-training/static/js/main.c9f0fc13.chunk.js",
-    "main.js.map": "/todo-sevima-training/static/js/main.c9f0fc13.chunk.js.map",
+    "main.js": "/todo-sevima-training/static/js/main.9b4963dc.chunk.js",
+    "main.js.map": "/todo-sevima-training/static/js/main.9b4963dc.chunk.js.map",
     "runtime-main.js": "/todo-sevima-training/static/js/runtime-main.7f7dde68.js",
     "runtime-main.js.map": "/todo-sevima-training/static/js/runtime-main.7f7dde68.js.map",
     "static/css/2.70d9d258.chunk.css": "/todo-sevima-training/static/css/2.70d9d258.chunk.css",
     "static/js/2.1185c8be.chunk.js": "/todo-sevima-training/static/js/2.1185c8be.chunk.js",
     "static/js/2.1185c8be.chunk.js.map": "/todo-sevima-training/static/js/2.1185c8be.chunk.js.map",
     "index.html": "/todo-sevima-training/index.html",
-    "precache-manifest.45371f985342acc6ddaf16109311df09.js": "/todo-sevima-training/precache-manifest.45371f985342acc6ddaf16109311df09.js",
+    "precache-manifest.1a09876b1da1e85d8ef8463f2618e2d1.js": "/todo-sevima-training/precache-manifest.1a09876b1da1e85d8ef8463f2618e2d1.js",
     "service-worker.js": "/todo-sevima-training/service-worker.js",
     "static/css/2.70d9d258.chunk.css.map": "/todo-sevima-training/static/css/2.70d9d258.chunk.css.map",
     "static/css/main.e17ac13f.chunk.css.map": "/todo-sevima-training/static/css/main.e17ac13f.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.70d9d258.chunk.css",
     "static/js/2.1185c8be.chunk.js",
     "static/css/main.e17ac13f.chunk.css",
-    "static/js/main.c9f0fc13.chunk.js"
+    "static/js/main.9b4963dc.chunk.js"
   ]
 }

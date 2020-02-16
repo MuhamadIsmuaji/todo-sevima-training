@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/todo-sevima-training/precache-manifest.45371f985342acc6ddaf16109311df09.js"
+  "/todo-sevima-training/precache-manifest.1a09876b1da1e85d8ef8463f2618e2d1.js"
 );
 
 self.addEventListener('message', (event) => {
