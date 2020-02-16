@@ -20,10 +20,10 @@ const TaskStatusListItem = (props) => {
             <div className="column is-12">
               <div className="field is-grouped is-grouped-centered">
                 <p className="control">
-                  <button className="button is-small is-warning is-fullwidth" onClick={() => props.onClick(props.taskIdx, 'edit')}>Edit</button>
+                  <button className="button is-small is-warning is-fullwidth" onClick={() => props.onClick(props.taskId, 'edit')}>Edit</button>
                 </p>
                 <p className="control">
-                  <button className="button is-small is-danger is-fullwidth" onClick={() => props.onClick(props.taskIdx, 'delete')}>Delete</button>
+                  <button className="button is-small is-danger is-fullwidth" onClick={() => props.onClick(props.taskId, 'delete')}>Delete</button>
                 </p>
               </div>
             </div>
@@ -45,7 +45,7 @@ const TaskStatusList = (props) => {
     <div className="container">
       {
         taskLists.map((val, idx) =>
-          <TaskStatusListItem  key={idx} taskIdx={idx} taskName={val.taskName} onClick={(id, action) => props.onClick(id, action)}></TaskStatusListItem>
+          <TaskStatusListItem  key={idx} taskId={val.taskId} taskName={val.taskName} onClick={(id, action) => props.onClick(id, action)}></TaskStatusListItem>
         )
       }
     </div>

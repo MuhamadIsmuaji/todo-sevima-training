@@ -14,9 +14,13 @@ const App = () => {
 
   const INIT_FORM_STATE = 'CREATE';
 
-  const [task, setTask] = useState({ taskName: '', taskPriority: TASK_PRIORITY_LOW, taskStatus: TASK_STATUS_NEW });
+  const [task, setTask] = useState({ taskId: '', taskName: '', taskPriority: TASK_PRIORITY_LOW, taskStatus: TASK_STATUS_NEW });
   const [taskLists, setTaskList] = useState([]);
   const [formState, setFormState] = useState(INIT_FORM_STATE);
+
+  const generateUniqId = () => {
+    return '_' + Math.random().toString(36).substr(2, 9);
+  }
   
   const getTaskPriorities = (key) => {
     const taskPriorities = [
@@ -57,19 +61,23 @@ const App = () => {
   };
 
   const resetTask = (e) => {
-    setTask({ taskName: '', taskPriority: TASK_PRIORITY_LOW, taskStatus: TASK_STATUS_NEW })
+    setTask({ taskId: '', taskName: '', taskPriority: TASK_PRIORITY_LOW, taskStatus: TASK_STATUS_NEW })
   }
 
   const handleSetTaskList = (e) => {
     e.preventDefault();
     if (formState === INIT_FORM_STATE) {
-      setTaskList([...taskLists, { taskName: task.taskName, taskPriority: task.taskPriority, taskStatus: task.taskStatus }]);
+      setTaskList([...taskLists, { taskId: generateUniqId(), taskName: task.taskName, taskPriority: task.taskPriority, taskStatus: task.taskStatus }]);
       resetTask();
     } else {
       let taskTemp = [...taskLists];
-      taskTemp[formState].taskName = task.taskName;
-      taskTemp[formState].taskPriority = task.taskPriority;
-      taskTemp[formState].taskStatus = task.taskStatus;
+      const taskIdTemp = taskTemp.findIndex((obj) => {
+        return obj.taskId === formState;
+      })
+
+      taskTemp[taskIdTemp].taskName = task.taskName;
+      taskTemp[taskIdTemp].taskPriority = task.taskPriority;
+      taskTemp[taskIdTemp].taskStatus = task.taskStatus;
 
       setTaskList(taskTemp);
       resetTask();
@@ -88,14 +96,14 @@ const App = () => {
         break;
     
       default:
-        throw 'Something wrong...';
+        // do nothing
         break;
     }
   }
 
   const deleteTask = (taskId) => {
     const taskListsTemp = taskLists.filter((obj, idx) => {
-      return idx !== taskId;
+      return obj.taskId !== taskId;
     });
 
     setTaskList(taskListsTemp);
@@ -105,10 +113,10 @@ const App = () => {
   const editTask = (taskId) => {
     setFormState(taskId);
     const taskTemp = taskLists.find((obj, idx) => {
-      return idx === taskId;
+      return obj.taskId === taskId;
     })
 
-    setTask({ taskName: taskTemp.taskName, taskPriority: taskTemp.taskPriority, taskStatus: taskTemp.taskStatus })
+    setTask({ taskId: taskTemp.taskId, taskName: taskTemp.taskName, taskPriority: taskTemp.taskPriority, taskStatus: taskTemp.taskStatus })
   }
 
   const getTaskListsBy = (filterBy, filterValue) => {
