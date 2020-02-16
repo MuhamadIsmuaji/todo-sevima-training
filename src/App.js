@@ -217,19 +217,22 @@ const App = () => {
           <TaskStatus 
             taskStatusLists={getTaskListsBy(`taskStatus`, TASK_STATUS_NEW)} 
             taskStatusTitle={getTaskStatuses(TASK_STATUS_NEW).statusName} 
-            onClick={(idx, action) => clickTaskItem(idx, action)} />
+            onClick={(idx, action) => clickTaskItem(idx, action)}
+            selectedTask={formState} />
         </div>
         <div className="column">
           <TaskStatus 
             taskStatusLists={getTaskListsBy(`taskStatus`, TASK_STATUS_INPROGRESS)} 
             taskStatusTitle={getTaskStatuses(TASK_STATUS_INPROGRESS).statusName} 
-            onClick={(idx, action) => clickTaskItem(idx, action)} />
+            onClick={(idx, action) => clickTaskItem(idx, action)}
+            selectedTask={formState} />
         </div>
         <div className="column">
           <TaskStatus 
             taskStatusLists={getTaskListsBy(`taskStatus`, TASK_STATUS_DONE)} 
             taskStatusTitle={getTaskStatuses(TASK_STATUS_DONE).statusName}
-            onClick={(idx, action) => clickTaskItem(idx, action)} />
+            onClick={(idx, action) => clickTaskItem(idx, action)}
+            selectedTask={formState} />
         </div>
       </div>
     </div>

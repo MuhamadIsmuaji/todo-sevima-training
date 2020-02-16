@@ -14,7 +14,7 @@ const TaskStatusListItem = (props) => {
   return (
     <div className="columns">
       <div className="column is-12">
-        <div className="notification">
+        <div className={`notification ${props.selectedTask === props.taskId ? 'is-info is-light' : ''}`}>
           <div className="columns">
             <div className="column is-12">
               {taskName} <span className={`tag ${taskPriorityIndicator}`}>{taskPriorityName}</span>
@@ -49,7 +49,15 @@ const TaskStatusList = (props) => {
     <div className="container">
       {
         taskLists.map((val, idx) =>
-          <TaskStatusListItem  key={idx} taskId={val.taskId} taskName={val.taskName} taskPriorityIndicator={val.taskPriorityIndicator} taskPriorityName={val.taskPriorityName} onClick={(id, action) => props.onClick(id, action)}></TaskStatusListItem>
+          <TaskStatusListItem  
+            key={idx} 
+            taskId={val.taskId} 
+            taskName={val.taskName} 
+            taskPriorityIndicator={val.taskPriorityIndicator} 
+            taskPriorityName={val.taskPriorityName}
+            selectedTask={props.selectedTask}
+            onClick={(id, action) => props.onClick(id, action)}>
+            </TaskStatusListItem>
         )
       }
     </div>

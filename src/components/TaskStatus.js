@@ -8,7 +8,7 @@ const TaskStatus = (props) => {
     <article className={`panel`}>
       <p className="panel-heading has-text-centered">{taskStatusTitle}</p>
       <div className="panel-block">
-        <TaskStatusList taskLists={props.taskStatusLists} onClick={(idx, action) => props.onClick(idx, action)}></TaskStatusList>
+        <TaskStatusList taskLists={props.taskStatusLists} selectedTask={props.selectedTask} onClick={(idx, action) => props.onClick(idx, action)}></TaskStatusList>
       </div>
     </article> 
   )
