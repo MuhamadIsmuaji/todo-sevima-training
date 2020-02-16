@@ -24,9 +24,9 @@ const App = () => {
   
   const getTaskPriorities = (key) => {
     const taskPriorities = [
-      { priorityKey: TASK_PRIORITY_LOW, priorityName: 'Low' },
-      { priorityKey: TASK_PRIORITY_MEDIUM, priorityName: 'Medium' },
-      { priorityKey: TASK_PRIORITY_HARD, priorityName: 'Hard' },
+      { priorityKey: TASK_PRIORITY_LOW, priorityName: 'Low', priorityIndicator: 'is-primary' },
+      { priorityKey: TASK_PRIORITY_MEDIUM, priorityName: 'Medium', priorityIndicator: 'is-warning' },
+      { priorityKey: TASK_PRIORITY_HARD, priorityName: 'Hard', priorityIndicator: 'is-danger' },
     ];
 
     if (key == null) {
@@ -120,7 +120,11 @@ const App = () => {
   }
 
   const getTaskListsBy = (filterBy, filterValue) => {
+    let taskPriority = null;
     return taskLists.filter((obj) => {
+      taskPriority = getTaskPriorities(obj.taskPriority);
+      obj.taskPriorityName = taskPriority.priorityName;
+      obj.taskPriorityIndicator = taskPriority.priorityIndicator;
       return obj[filterBy] === filterValue;
     })
   }

@@ -8,13 +8,17 @@ const TaskStatusListEmpty = () => {
 
 const TaskStatusListItem = (props) => {
   const taskName = props.taskName ? props.taskName : `-` ;
+  const taskPriorityIndicator = props.taskPriorityIndicator ? props.taskPriorityIndicator : `is-black`;
+  const taskPriorityName = props.taskPriorityName ? props.taskPriorityName : `-`;
 
   return (
     <div className="columns">
       <div className="column is-12">
         <div className="notification">
           <div className="columns">
-            <div className="column is-12">{taskName}</div>
+            <div className="column is-12">
+              {taskName} <span className={`tag ${taskPriorityIndicator}`}>{taskPriorityName}</span>
+            </div>
           </div>
           <div className="columns">
             <div className="column is-12">
@@ -45,7 +49,7 @@ const TaskStatusList = (props) => {
     <div className="container">
       {
         taskLists.map((val, idx) =>
-          <TaskStatusListItem  key={idx} taskId={val.taskId} taskName={val.taskName} onClick={(id, action) => props.onClick(id, action)}></TaskStatusListItem>
+          <TaskStatusListItem  key={idx} taskId={val.taskId} taskName={val.taskName} taskPriorityIndicator={val.taskPriorityIndicator} taskPriorityName={val.taskPriorityName} onClick={(id, action) => props.onClick(id, action)}></TaskStatusListItem>
         )
       }
     </div>
