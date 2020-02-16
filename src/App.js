@@ -2,11 +2,6 @@ import React, { useState, useEffect } from 'react';
 import 'bulma/css/bulma.css'
 import './App.css'
 import TaskStatus from './components/TaskStatus';
-// import styled from 'styled-components';
-
-// const ButtonCustom = styled(Button)`
-//   border-color: 1px black solid;
-// `;
 
 const App = () => {
   const TASK_PRIORITY_LOW = 'L';
@@ -74,11 +69,27 @@ const App = () => {
       let taskTemp = [...taskLists];
       taskTemp[formState].taskName = task.taskName;
       taskTemp[formState].taskPriority = task.taskPriority;
+      taskTemp[formState].taskStatus = task.taskStatus;
 
       setTaskList(taskTemp);
-
       resetTask();
       setFormState(INIT_FORM_STATE);
+    }
+  }
+
+  const clickTaskItem = (taskId, action) => {
+    switch (action) {
+      case 'edit':
+        editTask(taskId);
+        break;
+
+      case 'delete':
+        deleteTask(taskId);
+        break;
+    
+      default:
+        throw 'Something wrong...';
+        break;
     }
   }
 
@@ -97,11 +108,19 @@ const App = () => {
       return idx === taskId;
     })
 
-    setTask({ taskName: taskTemp.taskName, taskPriority: taskTemp.taskPriority })
+    setTask({ taskName: taskTemp.taskName, taskPriority: taskTemp.taskPriority, taskStatus: taskTemp.taskStatus })
+  }
+
+  const getTaskListsBy = (filterBy, filterValue) => {
+    return taskLists.filter((obj) => {
+      return obj[filterBy] === filterValue;
+    })
   }
 
   useEffect(() => {
-    document.title = `Number of task(s): ${taskLists.length}`;
+    document.title = `New (${getTaskListsBy('taskStatus', TASK_STATUS_NEW).length}) | 
+      Inprogress (${getTaskListsBy('taskStatus', TASK_STATUS_INPROGRESS).length}) | 
+      Done (${getTaskListsBy('taskStatus', TASK_STATUS_DONE).length})`;
   });
   
   return (
@@ -178,13 +197,22 @@ const App = () => {
       </form>
       <div className="columns">
         <div className="column">
-          <TaskStatus taskStatusTitle={getTaskStatuses(TASK_STATUS_NEW).statusName}/>
+          <TaskStatus 
+            taskStatusLists={getTaskListsBy(`taskStatus`, TASK_STATUS_NEW)} 
+            taskStatusTitle={getTaskStatuses(TASK_STATUS_NEW).statusName} 
+            onClick={(idx, action) => clickTaskItem(idx, action)} />
         </div>
         <div className="column">
-          <TaskStatus taskStatusClass="is-link" taskStatusTitle={getTaskStatuses(TASK_STATUS_INPROGRESS).statusName} />
+          <TaskStatus 
+            taskStatusLists={getTaskListsBy(`taskStatus`, TASK_STATUS_INPROGRESS)} 
+            taskStatusTitle={getTaskStatuses(TASK_STATUS_INPROGRESS).statusName} 
+            onClick={(idx, action) => clickTaskItem(idx, action)} />
         </div>
         <div className="column">
-          <TaskStatus taskStatusClass="is-success" taskStatusTitle={getTaskStatuses(TASK_STATUS_DONE).statusName} />
+          <TaskStatus 
+            taskStatusLists={getTaskListsBy(`taskStatus`, TASK_STATUS_DONE)} 
+            taskStatusTitle={getTaskStatuses(TASK_STATUS_DONE).statusName}
+            onClick={(idx, action) => clickTaskItem(idx, action)} />
         </div>
       </div>
     </div>

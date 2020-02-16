@@ -1,11 +1,14 @@
 import React from 'react';
+import TaskStatusList from './TaskStatusList';
 
 const TaskStatus = (props) => {
+  const taskStatusTitle = props.taskStatusTitle ? props.taskStatusTitle : `-`;
+
   return (
-    <article className={`panel ${props.taskStatusClass ? props.taskStatusClass : `is-primary`}`}>
-      <p className="panel-heading has-text-centered">{props.taskStatusTitle ? props.taskStatusTitle : `-` }</p>
+    <article className={`panel`}>
+      <p className="panel-heading has-text-centered">{taskStatusTitle}</p>
       <div className="panel-block">
-        Hello World
+        <TaskStatusList taskLists={props.taskStatusLists} onClick={(idx, action) => props.onClick(idx, action)}></TaskStatusList>
       </div>
     </article> 
   )
