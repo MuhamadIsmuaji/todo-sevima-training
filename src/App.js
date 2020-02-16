@@ -139,6 +139,11 @@ const App = () => {
     <div className="container">
       <form onSubmit={handleSetTaskList}>
         <div className="columns is-mobile">
+          <div className="column column is-three-fifths is-offset-one-fifth">
+            <p className="has-text-centered is-size-5 has-text-weight-medium">{formState === INIT_FORM_STATE ? `Create Task` : `Update Task ${task.taskName}`}</p>
+          </div>
+        </div>
+        <div className="columns is-mobile">
           <div className="column is-three-fifths is-offset-one-fifth">
             <div className="field is-horizontal">
               <div className="field-label is-normal">
