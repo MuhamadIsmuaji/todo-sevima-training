@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'bulma/css/bulma.css'
 import './App.css'
 import TaskStatus from './components/TaskStatus';
+import axios from 'axios';
 
 const App = () => {
   const TASK_PRIORITY_LOW = 'L';
@@ -131,10 +132,33 @@ const App = () => {
   }
 
   useEffect(() => {
+    
+    fetchNews();
+    fetchNews2();
     document.title = `New (${getTaskListsBy('taskStatus', TASK_STATUS_NEW).length}) | 
       Inprogress (${getTaskListsBy('taskStatus', TASK_STATUS_INPROGRESS).length}) | 
       Done (${getTaskListsBy('taskStatus', TASK_STATUS_DONE).length})`;
   });
+
+  const fetchNews = async () => {
+    try {
+      const todos = await axios.get('https://jsonplaceholder.typicode.com/todos/');
+      const todos2 = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
+      console.log(todos);
+      console.log(todos2);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const fetchNews2 = async () => {
+    try {
+      const todos = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
+      console.log('todos');
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
   return (
     <div className="container">
