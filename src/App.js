@@ -61,6 +61,7 @@ const App = () => {
   };
 
   const resetTask = (e) => {
+    setFormState(INIT_FORM_STATE);
     setTask({ taskId: '', taskName: '', taskPriority: TASK_PRIORITY_LOW, taskStatus: TASK_STATUS_NEW })
   }
 
@@ -206,7 +207,7 @@ const App = () => {
                   <button className="button is-primary" onClick={handleSetTaskList}>Save</button>
                 </div>
                 <div className="control">
-                  <button className="button is-link is-light">Cancel</button>
+                  <button className="button is-link is-light" onClick={resetTask}>Cancel</button>
                 </div>
               </div>
           </div>
